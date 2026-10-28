@@ -1,0 +1,276 @@
+/* TOTALITY — landing page v1
+   Identity: art-style-lock Direction C. Deep navy is the world's shadow;
+   corona gold is the only warm light and is reserved for holy things
+   (the CTA, the corona itself, focus rings, the success state).
+   Eclipse-rendering gradients are on-brief; decorative gradients are not. */
+
+:root {
+  --navy-deep: #0d141d;   /* page ground, darker than lock's #1b2838 family */
+  --navy: #1b2838;        /* lock's family anchor — panels, footer */
+  --navy-raise: #243347;  /* raised panel edge */
+  --gold: #ffcf5e;        /* corona gold — bright yellow-gold, the warm light */
+  --gold-dim: #b8963e;    /* gold, stepped down — hairlines, muted labels */
+  --ink: #e8edf4;         /* primary text — cool, never warm */
+  --ink-dim: #9aa8ba;     /* secondary text */
+  --ember: #ff5a36;       /* error voice: red-orange. NEVER amber (lock rule). */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--navy-deep);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.6;
+}
+
+main { position: relative; }
+
+/* ============ HERO ============ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1.25rem 5rem;
+  overflow: hidden;
+}
+
+/* --- CSS-only eclipse: gold corona ring behind a navy disc ---
+   On-brief: this is the eclipse itself, rendered in the lock's two constants
+   (navy shadow + corona gold). Gold appears ONLY here, on the CTA, and on
+   focus/success states. */
+
+.eclipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 62vmin;
+  height: 62vmin;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.corona {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255, 207, 94, 0.22) 0%,
+    rgba(255, 207, 94, 0.55) 58%,
+    rgba(255, 207, 94, 0) 72%);
+}
+
+.stars {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(232, 237, 244, 0.85) 1.5px, transparent 1.6px) 12% 20%,
+    radial-gradient(circle, rgba(232, 237, 244, 0.6) 1.2px, transparent 1.3px) 78% 14%,
+    radial-gradient(circle, rgba(232, 237, 244, 0.7) 1px, transparent 1.1px) 30% 84%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.disc {
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  background: var(--navy-deep);
+  box-shadow:
+    0 0 2px 1px rgba(255, 207, 94, 0.9),      /* the ring itself */
+    0 0 24px 6px rgba(255, 207, 94, 0.45),
+    0 0 90px 24px rgba(255, 207, 94, 0.18),
+    inset 0 0 18px 4px rgba(13, 20, 29, 0.9);
+}
+
+.disc::after {  /* Baily's beads — bright points on the ring's edge */
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 18%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff7e0;
+  box-shadow: 0 0 10px 3px rgba(255, 207, 94, 0.85);
+}
+
+/* --- Hero copy --- */
+
+.brand-line {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.8rem;
+  color: var(--gold-dim);
+  margin: 0 0 0.75rem;
+}
+
+h1 {
+  position: relative;
+  margin: 0;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.pitch {
+  position: relative;
+  max-width: 34rem;
+  margin: 1.5rem auto 2.5rem;
+  color: var(--ink-dim);
+  font-size: 1.02rem;
+}
+
+/* ============ CTA ============ */
+
+.cta {
+  position: relative;
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  background: rgba(255, 207, 94, 0.06);
+  transition: background 160ms ease, box-shadow 160ms ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: rgba(255, 207, 94, 0.14);
+  box-shadow: 0 0 24px rgba(255, 207, 94, 0.25);
+  outline: none;
+}
+
+/* ============ SIGNUP ============ */
+
+.signup {
+  position: relative;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 5rem 1.25rem 6rem;
+  text-align: center;
+}
+
+.signup h2 {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  margin: 0 0 1.75rem;
+  color: var(--ink);
+}
+
+form { text-align: left; }
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold-dim);
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--navy);
+  border: 1px solid var(--navy-raise);
+  border-radius: 2px;
+}
+
+input[type="email"]:focus-visible {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), 0 0 18px rgba(255, 207, 94, 0.15);
+}
+
+input.error-state {
+  border-color: var(--ember);
+  box-shadow: 0 0 0 1px var(--ember);
+}
+
+button {
+  padding: 0.85rem 1.6rem;
+  font: inherit;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--navy-deep);
+  background: var(--gold);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: box-shadow 160ms ease, filter 160ms ease;
+}
+
+button:hover,
+button:focus-visible {
+  filter: brightness(1.06);
+  box-shadow: 0 0 22px rgba(255, 207, 95, 0.35);
+  outline: none;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.status { min-height: 1.5em; margin: 0.75rem 0 0; font-size: 0.95rem; }
+
+.status.error { color: var(--ember); }   /* red-orange, never amber */
+.status.success { color: var(--gold); } /* gold = holy things: the win state */
+
+.follow {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--ink-dim);
+}
+
+.follow a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
+.follow a:hover { border-bottom-color: var(--gold); }
+
+/* ============ FOOTER ============ */
+
+footer {
+  background: var(--navy);
+  border-top: 1px solid var(--navy-raise);
+  padding: 2rem 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+}
+
+footer p { margin: 0; }
+
+/* ============ MOBILE ============ */
+
+@media (max-width: 540px) {
+  .row { flex-direction: column; }
+  button { width: 100%; }
+  .eclipse { width: 88vmin; height: 88vmin; opacity: 0.85; }
+  .pitch { font-size: 0.95rem; }
+}

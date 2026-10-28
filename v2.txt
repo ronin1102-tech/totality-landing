@@ -1,0 +1,15 @@
+Totality landing — parking lot (v2, not this build)
+====================================================
+
+From the locked brief (do NOT build placeholders for any of these):
+- Trailer embed (no trailer exists; gameplay clip comes after the game is playable)
+- Wishlist / store links (no store page — Totality is a web game)
+- Screenshot gallery
+- Dev-log
+
+From scope rev 1, still parked:
+- Analytics (Cloudflare Web Analytics or other)
+- Meta/pixel lead tracking
+- Real asset pass: og:image, favicon, social cards
+- Email copy / sequences
+- Animation / polish beyond baseline

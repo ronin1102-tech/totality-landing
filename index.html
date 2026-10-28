@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Totality — an eclipse-myth marble shooter | Solstice Interactive</title>
+  <meta name="description" content="Totality is an eclipse-themed marble shooter — Zuma on steroids. 25 levels across the four Houses of the Sun, ending in a finale you win by letting totality happen.">
+  <meta name="theme-color" content="#0d141d">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="eclipse" aria-hidden="true">
+        <div class="corona"></div>
+        <div class="stars"></div>
+        <div class="disc"></div>
+      </div>
+
+      <p class="brand-line">Solstice Interactive presents</p>
+      <h1>Totality</h1>
+
+      <!-- Locked copy: vault totality-landing-brief-answers.md §1, verbatim. Do not reword. -->
+      <p class="pitch">Totality is an eclipse-themed marble shooter — Zuma on
+      steroids. A chain of glyph-orbs rolls along orbital grooves toward the
+      Core; firing from the Eclipse Idol, you match three or more to pop the
+      chain, trigger magnetic snap-back combos, and fill the Corona Gauge
+      before the chain arrives. It's a real campaign, not an endless loop:
+      25 levels across the four Houses of the Sun — Dawn, Zenith, Ember,
+      Night — ending in a finale called TOTALITY, with Endless Orbit
+      unlocking after. The name is the ending: the finale isn't stopped,
+      it's survived — you win by letting totality happen. Built by Solstice
+      Interactive; the eclipse is the Solstice mark.</p>
+
+      <a class="cta" href="#signup">Notify me at launch</a>
+    </section>
+
+    <!-- ============ SIGNUP — the point of v1 ============ -->
+    <section class="signup" id="signup">
+      <h2>Be first when the sky goes dark.</h2>
+      <form id="signup-form" novalidate>
+        <label for="email">Email</label>
+        <div class="row">
+          <input type="email" id="email" name="email" autocomplete="email"
+                 placeholder="you@example.com" required>
+          <button type="submit" id="submit-btn">Notify me at launch</button>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <!-- TODO(tracy): swap in the real Solstice Instagram URL — no handle found
+           in either landing repo; one-string swap when you have it. -->
+      <p class="follow">Follow the eclipse on
+        <a href="https://www.instagram.com/" rel="noopener">Instagram</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Totality is a Solstice Interactive game. © 2026 Solstice.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
