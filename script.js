@@ -11,6 +11,7 @@
   var status = document.getElementById('status');
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function show(text, cls) {
     status.textContent = text;
@@ -70,4 +71,55 @@
         showError('Can\'t reach the Core right now — check your connection and try again.');
       });
   });
+
+  /* ---------------------------------------------------------------
+     Visual pass (UI only): the panel drifts up when it comes into
+     view, and the sky leans a few pixels with a fine pointer. Both
+     are decoration — nothing here touches validation or the POST.
+     --------------------------------------------------------------- */
+
+  var panel = document.querySelector('.panel');
+
+  if (panel && 'IntersectionObserver' in window && !reduceMotion.matches) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          panel.classList.add('is-visible');
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(panel);
+  } else if (panel) {
+    panel.classList.add('is-visible');
+  }
+
+  var hero = document.querySelector('.hero');
+  var sky = document.querySelector('.sky');
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (hero && sky && finePointer && !reduceMotion.matches) {
+    var frame = null;
+    var px = 0;
+    var py = 0;
+
+    var paint = function () {
+      frame = null;
+      sky.style.setProperty('--px', px.toFixed(3));
+      sky.style.setProperty('--py', py.toFixed(3));
+    };
+
+    hero.addEventListener('pointermove', function (ev) {
+      var box = hero.getBoundingClientRect();
+      px = (ev.clientX - box.left) / box.width - 0.5;
+      py = (ev.clientY - box.top) / box.height - 0.5;
+      if (!frame) frame = window.requestAnimationFrame(paint);
+    }, { passive: true });
+
+    hero.addEventListener('pointerleave', function () {
+      px = 0;
+      py = 0;
+      if (!frame) frame = window.requestAnimationFrame(paint);
+    });
+  }
 })();

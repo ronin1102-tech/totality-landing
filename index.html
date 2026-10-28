@@ -5,18 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Totality — an eclipse-myth marble shooter | Solstice Interactive</title>
   <meta name="description" content="Totality is an eclipse-themed marble shooter — Zuma on steroids. 25 levels across the four Houses of the Sun, ending in a finale you win by letting totality happen.">
-  <meta name="theme-color" content="#0d141d">
+  <meta name="theme-color" content="#060a0f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Instrument+Sans:ital,wght@0,400..600;1,400&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+  <div class="grain" aria-hidden="true"></div>
+
   <main>
     <!-- ============ HERO ============ -->
     <section class="hero">
-      <div class="eclipse" aria-hidden="true">
-        <div class="corona"></div>
-        <div class="stars"></div>
-        <div class="disc"></div>
+      <!-- The sky: grooves, coronium, the disc. Decoration only — the
+           Houses are named in the locked copy below. -->
+      <div class="sky" aria-hidden="true">
+        <div class="grooves">
+          <i class="groove groove--night"></i>
+          <i class="groove groove--dawn"></i>
+          <i class="groove groove--gold"></i>
+        </div>
+        <div class="corona">
+          <div class="chromosphere"></div>
+          <div class="disc"></div>
+          <i class="bead bead--a"></i>
+          <i class="bead bead--b"></i>
+        </div>
+      </div>
+
+      <!-- Floating tickets: the four Houses of the Sun, in the order the
+           campaign walks them. Lifted by hand from the locked paragraph. -->
+      <div class="houses" aria-hidden="true">
+        <div class="house house--dawn"><span class="house-name">Dawn</span></div>
+        <div class="house house--zenith"><span class="house-name">Zenith</span></div>
+        <div class="house house--ember"><span class="house-name">Ember</span></div>
+        <div class="house house--night"><span class="house-name">Night</span></div>
       </div>
 
       <p class="brand-line">Solstice Interactive presents</p>
@@ -34,27 +58,29 @@
       it's survived — you win by letting totality happen. Built by Solstice
       Interactive; the eclipse is the Solstice mark.</p>
 
-      <a class="cta" href="#signup">Notify me at launch</a>
+      <a class="cta" href="#signup"><span>Notify me at launch</span></a>
     </section>
 
     <!-- ============ SIGNUP — the point of v1 ============ -->
     <section class="signup" id="signup">
-      <h2>Be first when the sky goes dark.</h2>
-      <form id="signup-form" novalidate>
-        <label for="email">Email</label>
-        <div class="row">
-          <input type="email" id="email" name="email" autocomplete="email"
-                 placeholder="you@example.com" required>
-          <button type="submit" id="submit-btn">Notify me at launch</button>
-        </div>
-        <p class="status" id="status" role="status" aria-live="polite"></p>
-      </form>
+      <div class="panel">
+        <h2>Be first when the sky goes dark.</h2>
+        <form id="signup-form" novalidate>
+          <label for="email">Email</label>
+          <div class="row">
+            <input type="email" id="email" name="email" autocomplete="email"
+                   placeholder="you@example.com" required>
+            <button type="submit" id="submit-btn">Notify me at launch</button>
+          </div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
 
-      <!-- TODO(tracy): swap in the real Solstice Instagram URL — no handle found
-           in either landing repo; one-string swap when you have it. -->
-      <p class="follow">Follow the eclipse on
-        <a href="https://www.instagram.com/" rel="noopener">Instagram</a>
-      </p>
+        <!-- TODO(tracy): swap in the real Solstice Instagram URL — no handle found
+             in either landing repo; one-string swap when you have it. -->
+        <p class="follow">Follow the eclipse on
+          <a href="https://www.instagram.com/" rel="noopener">Instagram</a>
+        </p>
+      </div>
     </section>
   </main>
 
